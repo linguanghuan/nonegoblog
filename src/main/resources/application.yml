@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: blog
+  datasource:
+    driverClassName: org.sqlite.JDBC
+    url: jdbc:sqlite:example.db
+    username: 
+    password: 
+    
