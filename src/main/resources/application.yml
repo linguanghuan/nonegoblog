@@ -2,8 +2,8 @@ spring:
   application:
     name: blog
   datasource:
-    driverClassName: org.sqlite.JDBC
-    url: jdbc:sqlite:example.db
-    username: 
-    password: 
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
     
