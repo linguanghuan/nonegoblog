@@ -6,6 +6,8 @@ spring:
     url: jdbc:mysql://localhost:3306/blog?characterEncoding=utf8
     username: root
     password: root
-mybatis: 
+  thymeleaf:
+    cache: false
+mybatis:
   mapperLocations: classpath:net/nonego/blog/mapper/*.xml
   typeAliasesPackage: net.nonego.blog.model
