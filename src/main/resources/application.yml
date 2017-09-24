@@ -7,6 +7,8 @@ spring:
     username: root
     password: root
   thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
     cache: false
 mybatis:
   mapperLocations: classpath:net/nonego/blog/mapper/*.xml

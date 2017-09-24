@@ -11,4 +11,10 @@ public class IndexController {
 		model.addAttribute("user", "test");
 		return "index";
 	}
+	
+	@RequestMapping("/base")
+	public String base(Model model) {
+		model.addAttribute("user", "test");
+		return "base";
+	}
 }
