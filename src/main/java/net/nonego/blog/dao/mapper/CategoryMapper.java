@@ -1,6 +1,6 @@
-package net.nonego.blog.inter;
+package net.nonego.blog.dao.mapper;
 
-import net.nonego.blog.model.Category;
+import net.nonego.blog.dao.model.Category;
 
 public interface CategoryMapper {
     int deleteByPrimaryKey(Integer id);

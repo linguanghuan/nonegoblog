@@ -11,5 +11,5 @@ spring:
     encoding: UTF-8
     cache: false
 mybatis:
-  mapperLocations: classpath:net/nonego/blog/mapper/*.xml
-  typeAliasesPackage: net.nonego.blog.model
+  mapperLocations: classpath:net/nonego/blog/dao/xml/*.xml
+  typeAliasesPackage: net.nonego.blog.dao.model

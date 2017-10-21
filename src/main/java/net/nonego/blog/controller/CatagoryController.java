@@ -5,10 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import net.nonego.blog.inter.CategoryMapper;
-import net.nonego.blog.model.Category;
+import net.nonego.blog.dao.mapper.CategoryMapper;
+import net.nonego.blog.dao.model.Category;
+
 
 @Controller
+@RequestMapping("/catagory/")
 public class CatagoryController {
 	@Autowired
 	CategoryMapper catagoryMapper;
