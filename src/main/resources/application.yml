@@ -7,9 +7,11 @@ spring:
     username: root
     password: root
   thymeleaf:
-    mode: HTML5
+    mode: LEGACYHTML5
     encoding: UTF-8
     cache: false
+  resources: 
+    static-locations: classpath:/    
 mybatis:
   mapperLocations: classpath:net/nonego/blog/dao/xml/*.xml
   typeAliasesPackage: net.nonego.blog.dao.model

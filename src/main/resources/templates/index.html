@@ -1,26 +1,31 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-<title>index</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+<script src="../static/js/jquery-3.2.1.js"></script>
+<script src="../static/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>index</h1>
-	<h2>
-		user2: <span th:text="${user}"></span>
-	</h2>
-	<form id="login-form" th:action="@{/login}">...</form>
-	<table>
-		<tr>
-			<td class="text" th:text="${user}"></td>
-		</tr>
-	</table>
-	<div class="aaa">
-		<div th:include="footer :: copy"></div>
-	</div>
-	<hr></hr>
-	<div class="aaa">
-		<div th:replace="footer :: copy"></div>
-	</div>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">NonegoBlog</a>
+			</div>
+			<div>
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"> Java <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">多线程</a></li>
+							<li><a href="#">Netty</a></li>
+						</ul></li>
+					<li><a href="#">Linux</a></li>
+					<li><a href="#">C/C++</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 </body>
 </html>
