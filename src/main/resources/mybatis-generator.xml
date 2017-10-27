@@ -52,13 +52,21 @@
 		</javaClientGenerator>
 
 		<!-- 要对哪些数据表进行生成操作，必须要有一个. -->
+		<table schema="user" tableName="user" domainObjectName="User"></table>
+		<table schema="type" tableName="type" domainObjectName="Type"></table>
+		<table schema="category" tableName="category" domainObjectName="Category"></table>
+        <table schema="tag" tableName="tag" domainObjectName="Tag"></table>
+        <table schema="article_tag" tableName="article_tag" domainObjectName="ArticleTag">
+            <oneToOne mappingTable="tag" column="tag_id" joinColumn="tag_id" />
+        </table>
+        <table schema="article_category" tableName="article_category" domainObjectName="ArticleCategory">
+            <oneToOne mappingTable="category" column="category_id" joinColumn="category_id" />
+        </table>
 		<table schema="article" tableName="article" domainObjectName="Article">
-		  <oneToMany mappingTable="article_tag" column="id" joinColumn="article_id" />
-		</table>
-		<table schema="catagory" tableName="catagory" domainObjectName="Category"></table>
-		<table schema="tag" tableName="tag" domainObjectName="Tag"></table>
-		<table schema="article_tag" tableName="article_tag" domainObjectName="ArticleTag">
-			<oneToOne mappingTable="tag" column="tag_id" joinColumn="id" />
+		  <oneToOne mappingTable="user" column="user_id" joinColumn="user_id" />
+		  <oneToOne mappingTable="type" column="type_id" joinColumn="type_id" />
+		  <oneToMany mappingTable="article_tag" column="article_id" joinColumn="article_id" />
+		  <oneToMany mappingTable="article_category" column="article_id" joinColumn="article_id" />
 		</table>
 	</context>
 </generatorConfiguration>

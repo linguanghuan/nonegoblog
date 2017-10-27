@@ -1,7 +1,27 @@
 <div>
-    <span th:text="${article.id}">id</span><br />
-    <span th:text="${article.title}">title</span><br />
-    <span th:utext="${article.content}">content</span><br />
-    <span th:text="${article.authorId}">author</span><br />
-    <span th:text="${#dates.format(article.createTime,'yyyy-MM-dd HH:mm:ss')} ">createTime</span><br />
+	<h1 th:text="${article.title}">title</h1>
+	<div>
+	id: <span th:text="${article.articleId}">articleId</span>,
+	作者:<span th:text="${article.user.userName}">author</span>,
+	<span
+		th:text="${#dates.format(article.createTime,'yyyy-MM-dd HH:mm:ss')} ">createTime</span>
+    </div>
+    标签:
+    <table>
+	    <tr th:each="tag,tagStat : ${article.articleTags}">
+	        <td th:text="${tagStat.index}">index</td>
+	        <td th:text="${tag.tag.tagName}">tagName</td>
+	    </tr>
+    </table>
+    分类:
+    <table>
+        <tr th:each="cata,cataStat : ${article.articleCategorys}">
+            <td th:text="${cataStat.index}">index</td>
+            <td th:text="${cata.category.categoryName}">categoryName</td>
+        </tr>
+    </table>
+    类型: <span th:text="${article.type.typeName}"></span>
+    <span th:if="${article.type.typeId==2}" th:text="${article.sourceUrl}"></span>
+	<div th:utext="${article.content}">content</div>
+	<br />
 </div>

@@ -4,34 +4,42 @@ import java.util.Date;
 import java.util.List;
 
 public class Article {
-    private Integer id;
+    private Integer articleId;
 
-    private Byte type;
+    private Integer typeId;
 
     private String title;
 
-    private Integer authorId;
+    private Integer userId;
 
     private Date createTime;
 
+    private String sourceUrl;
+
     private String content;
+
+    private User user;
+
+    private Type type;
 
     private List<ArticleTag> articleTags;
 
-    public Integer getId() {
-        return id;
+    private List<ArticleCategory> articleCategorys;
+
+    public Integer getArticleId() {
+        return articleId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setArticleId(Integer articleId) {
+        this.articleId = articleId;
     }
 
-    public Byte getType() {
-        return type;
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setType(Byte type) {
-        this.type = type;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public String getTitle() {
@@ -42,12 +50,12 @@ public class Article {
         this.title = title == null ? null : title.trim();
     }
 
-    public Integer getAuthorId() {
-        return authorId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setAuthorId(Integer authorId) {
-        this.authorId = authorId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Date getCreateTime() {
@@ -58,6 +66,14 @@ public class Article {
         this.createTime = createTime;
     }
 
+    public String getSourceUrl() {
+        return sourceUrl;
+    }
+
+    public void setSourceUrl(String sourceUrl) {
+        this.sourceUrl = sourceUrl == null ? null : sourceUrl.trim();
+    }
+
     public String getContent() {
         return content;
     }
@@ -66,11 +82,35 @@ public class Article {
         this.content = content == null ? null : content.trim();
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user=user;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type=type;
+    }
+
     public List<ArticleTag> getArticleTags() {
         return articleTags;
     }
 
     public void setArticleTags(List<ArticleTag> articleTags) {
         this.articleTags=articleTags;
+    }
+
+    public List<ArticleCategory> getArticleCategorys() {
+        return articleCategorys;
+    }
+
+    public void setArticleCategorys(List<ArticleCategory> articleCategorys) {
+        this.articleCategorys=articleCategorys;
     }
 }

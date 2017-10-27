@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="net.nonego.blog.dao.generator.mapper.ArticleTagMapper">
-  <resultMap id="BaseResultMap" type="net.nonego.blog.dao.generator.model.ArticleTag">
+<mapper namespace="net.nonego.blog.dao.generator.mapper.ArticleCategoryMapper">
+  <resultMap id="BaseResultMap" type="net.nonego.blog.dao.generator.model.ArticleCategory">
     <result column="article_id" jdbcType="INTEGER" property="articleId" />
-    <result column="tag_id" jdbcType="INTEGER" property="tagId" />
-    <association column="tag_id" property="tag" select="getTag" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <association column="category_id" property="category" select="getCategory" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    article_id, tag_id
+    article_id, category_id
   </sql>
-  <select id="selectByExample" parameterType="net.nonego.blog.dao.generator.model.ArticleTagExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="net.nonego.blog.dao.generator.model.ArticleCategoryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from article_tag
+    from article_category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -81,49 +81,49 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="net.nonego.blog.dao.generator.model.ArticleTagExample">
-    delete from article_tag
+  <delete id="deleteByExample" parameterType="net.nonego.blog.dao.generator.model.ArticleCategoryExample">
+    delete from article_category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="net.nonego.blog.dao.generator.model.ArticleTag">
-    insert into article_tag (article_id, tag_id)
-    values (#{articleId,jdbcType=INTEGER}, #{tagId,jdbcType=INTEGER})
+  <insert id="insert" parameterType="net.nonego.blog.dao.generator.model.ArticleCategory">
+    insert into article_category (article_id, category_id)
+    values (#{articleId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="net.nonego.blog.dao.generator.model.ArticleTag">
-    insert into article_tag
+  <insert id="insertSelective" parameterType="net.nonego.blog.dao.generator.model.ArticleCategory">
+    insert into article_category
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="articleId != null">
         article_id,
       </if>
-      <if test="tagId != null">
-        tag_id,
+      <if test="categoryId != null">
+        category_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="articleId != null">
         #{articleId,jdbcType=INTEGER},
       </if>
-      <if test="tagId != null">
-        #{tagId,jdbcType=INTEGER},
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="net.nonego.blog.dao.generator.model.ArticleTagExample" resultType="java.lang.Long">
-    select count(*) from article_tag
+  <select id="countByExample" parameterType="net.nonego.blog.dao.generator.model.ArticleCategoryExample" resultType="java.lang.Long">
+    select count(*) from article_category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update article_tag
+    update article_category
     <set>
       <if test="record.articleId != null">
         article_id = #{record.articleId,jdbcType=INTEGER},
       </if>
-      <if test="record.tagId != null">
-        tag_id = #{record.tagId,jdbcType=INTEGER},
+      <if test="record.categoryId != null">
+        category_id = #{record.categoryId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -131,14 +131,14 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update article_tag
+    update article_category
     set article_id = #{record.articleId,jdbcType=INTEGER},
-      tag_id = #{record.tagId,jdbcType=INTEGER}
+      category_id = #{record.categoryId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <select id="getTag" resultMap="net.nonego.blog.dao.generator.mapper.TagMapper.BaseResultMap">
-    select tag_id,tag_name from tag where tag_id=#{tagId}
+  <select id="getCategory" resultMap="net.nonego.blog.dao.generator.mapper.CategoryMapper.BaseResultMap">
+    select category_id,category_name from category where category_id=#{categoryId}
   </select>
 </mapper>

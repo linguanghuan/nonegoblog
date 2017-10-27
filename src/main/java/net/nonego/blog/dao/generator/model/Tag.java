@@ -1,23 +1,23 @@
 package net.nonego.blog.dao.generator.model;
 
 public class Tag {
-    private Integer id;
+    private Integer tagId;
 
-    private String tag;
+    private String tagName;
 
-    public Integer getId() {
-        return id;
+    public Integer getTagId() {
+        return tagId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setTagId(Integer tagId) {
+        this.tagId = tagId;
     }
 
-    public String getTag() {
-        return tag;
+    public String getTagName() {
+        return tagName;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag == null ? null : tag.trim();
+    public void setTagName(String tagName) {
+        this.tagName = tagName == null ? null : tagName.trim();
     }
 }

@@ -19,7 +19,7 @@ public class CatagoryController {
 	@ResponseBody
 	public String add() {
 		Category record = new Category();
-		record.setName("test");
+		record.setCategoryName("test");
 		catagoryMapper.insert(record );
 		return "success";
 	}

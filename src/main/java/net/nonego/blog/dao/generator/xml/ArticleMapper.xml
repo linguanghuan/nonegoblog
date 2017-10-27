@@ -2,12 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.nonego.blog.dao.generator.mapper.ArticleMapper">
   <resultMap id="BaseResultMap" type="net.nonego.blog.dao.generator.model.Article">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="type" jdbcType="TINYINT" property="type" />
+    <id column="article_id" jdbcType="INTEGER" property="articleId" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
     <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="author_id" jdbcType="INTEGER" property="authorId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <collection column="id" property="articleTags" select="getArticleTags" />
+    <result column="source_url" jdbcType="VARCHAR" property="sourceUrl" />
+    <association column="user_id" property="user" select="getUser" />
+    <association column="type_id" property="type" select="getType" />
+    <collection column="article_id" property="articleTags" select="getArticleTags" />
+    <collection column="article_id" property="articleCategorys" select="getArticleCategorys" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="net.nonego.blog.dao.generator.model.Article">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
@@ -71,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, type, title, author_id, create_time
+    article_id, type_id, title, user_id, create_time, source_url
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -112,11 +116,11 @@
     ,
     <include refid="Blob_Column_List" />
     from article
-    where id = #{id,jdbcType=INTEGER}
+    where article_id = #{articleId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from article
-    where id = #{id,jdbcType=INTEGER}
+    where article_id = #{articleId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="net.nonego.blog.dao.generator.model.ArticleExample">
     delete from article
@@ -125,50 +129,56 @@
     </if>
   </delete>
   <insert id="insert" parameterType="net.nonego.blog.dao.generator.model.Article">
-    insert into article (id, type, title, 
-      author_id, create_time, content
-      )
-    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=TINYINT}, #{title,jdbcType=VARCHAR}, 
-      #{authorId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
-      )
+    insert into article (article_id, type_id, title, 
+      user_id, create_time, source_url, 
+      content)
+    values (#{articleId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{sourceUrl,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="net.nonego.blog.dao.generator.model.Article">
     insert into article
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="articleId != null">
+        article_id,
       </if>
-      <if test="type != null">
-        type,
+      <if test="typeId != null">
+        type_id,
       </if>
       <if test="title != null">
         title,
       </if>
-      <if test="authorId != null">
-        author_id,
+      <if test="userId != null">
+        user_id,
       </if>
       <if test="createTime != null">
         create_time,
+      </if>
+      <if test="sourceUrl != null">
+        source_url,
       </if>
       <if test="content != null">
         content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="articleId != null">
+        #{articleId,jdbcType=INTEGER},
       </if>
-      <if test="type != null">
-        #{type,jdbcType=TINYINT},
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
       </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="authorId != null">
-        #{authorId,jdbcType=INTEGER},
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceUrl != null">
+        #{sourceUrl,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
@@ -184,20 +194,23 @@
   <update id="updateByExampleSelective" parameterType="map">
     update article
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+      <if test="record.articleId != null">
+        article_id = #{record.articleId,jdbcType=INTEGER},
       </if>
-      <if test="record.type != null">
-        type = #{record.type,jdbcType=TINYINT},
+      <if test="record.typeId != null">
+        type_id = #{record.typeId,jdbcType=INTEGER},
       </if>
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
       </if>
-      <if test="record.authorId != null">
-        author_id = #{record.authorId,jdbcType=INTEGER},
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sourceUrl != null">
+        source_url = #{record.sourceUrl,jdbcType=VARCHAR},
       </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=LONGVARCHAR},
@@ -209,11 +222,12 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update article
-    set id = #{record.id,jdbcType=INTEGER},
-      type = #{record.type,jdbcType=TINYINT},
+    set article_id = #{record.articleId,jdbcType=INTEGER},
+      type_id = #{record.typeId,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
-      author_id = #{record.authorId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      source_url = #{record.sourceUrl,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -221,11 +235,12 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update article
-    set id = #{record.id,jdbcType=INTEGER},
-      type = #{record.type,jdbcType=TINYINT},
+    set article_id = #{record.articleId,jdbcType=INTEGER},
+      type_id = #{record.typeId,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
-      author_id = #{record.authorId,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+      user_id = #{record.userId,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      source_url = #{record.sourceUrl,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -233,42 +248,56 @@
   <update id="updateByPrimaryKeySelective" parameterType="net.nonego.blog.dao.generator.model.Article">
     update article
     <set>
-      <if test="type != null">
-        type = #{type,jdbcType=TINYINT},
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
       </if>
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="authorId != null">
-        author_id = #{authorId,jdbcType=INTEGER},
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceUrl != null">
+        source_url = #{sourceUrl,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where article_id = #{articleId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="net.nonego.blog.dao.generator.model.Article">
     update article
-    set type = #{type,jdbcType=TINYINT},
+    set type_id = #{typeId,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
-      author_id = #{authorId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
+      source_url = #{sourceUrl,jdbcType=VARCHAR},
       content = #{content,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where article_id = #{articleId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.nonego.blog.dao.generator.model.Article">
     update article
-    set type = #{type,jdbcType=TINYINT},
+    set type_id = #{typeId,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
-      author_id = #{authorId,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+      user_id = #{userId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      source_url = #{sourceUrl,jdbcType=VARCHAR}
+    where article_id = #{articleId,jdbcType=INTEGER}
   </update>
+  <select id="getUser" resultMap="net.nonego.blog.dao.generator.mapper.UserMapper.BaseResultMap">
+    select user_id,user_name,email,password,mobile_phone,wechat,qq,create_time from user where user_id=#{userId}
+  </select>
+  <select id="getType" resultMap="net.nonego.blog.dao.generator.mapper.TypeMapper.BaseResultMap">
+    select type_id,type_name from type where type_id=#{typeId}
+  </select>
   <select id="getArticleTags" resultMap="net.nonego.blog.dao.generator.mapper.ArticleTagMapper.BaseResultMap">
-    select article_id,tag_id from article_tag where article_id=#{id} 
+    select article_id,tag_id from article_tag where article_id=#{articleId} 
+  </select>
+  <select id="getArticleCategorys" resultMap="net.nonego.blog.dao.generator.mapper.ArticleCategoryMapper.BaseResultMap">
+    select article_id,category_id from article_category where article_id=#{articleId} 
   </select>
 </mapper>

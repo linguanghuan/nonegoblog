@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.nonego.blog.dao.generator.mapper.CategoryMapper">
   <resultMap id="BaseResultMap" type="net.nonego.blog.dao.generator.model.Category">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
+    <id column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,7 +64,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name
+    category_id, category_name
   </sql>
   <select id="selectByExample" parameterType="net.nonego.blog.dao.generator.model.CategoryExample" resultMap="BaseResultMap">
     select
@@ -72,7 +72,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from catagory
+    from category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,56 +83,56 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from catagory
-    where id = #{id,jdbcType=INTEGER}
+    from category
+    where category_id = #{categoryId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from catagory
-    where id = #{id,jdbcType=INTEGER}
+    delete from category
+    where category_id = #{categoryId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="net.nonego.blog.dao.generator.model.CategoryExample">
-    delete from catagory
+    delete from category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="net.nonego.blog.dao.generator.model.Category">
-    insert into catagory (id, name)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+    insert into category (category_id, category_name)
+    values (#{categoryId,jdbcType=INTEGER}, #{categoryName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="net.nonego.blog.dao.generator.model.Category">
-    insert into catagory
+    insert into category
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="categoryId != null">
+        category_id,
       </if>
-      <if test="name != null">
-        name,
+      <if test="categoryName != null">
+        category_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="categoryName != null">
+        #{categoryName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="net.nonego.blog.dao.generator.model.CategoryExample" resultType="java.lang.Long">
-    select count(*) from catagory
+    select count(*) from category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update catagory
+    update category
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+      <if test="record.categoryId != null">
+        category_id = #{record.categoryId,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.categoryName != null">
+        category_name = #{record.categoryName,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -140,25 +140,25 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update catagory
-    set id = #{record.id,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR}
+    update category
+    set category_id = #{record.categoryId,jdbcType=INTEGER},
+      category_name = #{record.categoryName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="net.nonego.blog.dao.generator.model.Category">
-    update catagory
+    update category
     <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+      <if test="categoryName != null">
+        category_name = #{categoryName,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where category_id = #{categoryId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.nonego.blog.dao.generator.model.Category">
-    update catagory
-    set name = #{name,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    update category
+    set category_name = #{categoryName,jdbcType=VARCHAR}
+    where category_id = #{categoryId,jdbcType=INTEGER}
   </update>
 </mapper>

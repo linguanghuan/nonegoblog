@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.nonego.blog.dao.generator.mapper.TagMapper">
   <resultMap id="BaseResultMap" type="net.nonego.blog.dao.generator.model.Tag">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <id column="tag_id" jdbcType="INTEGER" property="tagId" />
+    <result column="tag_name" jdbcType="VARCHAR" property="tagName" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,7 +64,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, tag
+    tag_id, tag_name
   </sql>
   <select id="selectByExample" parameterType="net.nonego.blog.dao.generator.model.TagExample" resultMap="BaseResultMap">
     select
@@ -84,11 +84,11 @@
     select 
     <include refid="Base_Column_List" />
     from tag
-    where id = #{id,jdbcType=INTEGER}
+    where tag_id = #{tagId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tag
-    where id = #{id,jdbcType=INTEGER}
+    where tag_id = #{tagId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="net.nonego.blog.dao.generator.model.TagExample">
     delete from tag
@@ -97,25 +97,25 @@
     </if>
   </delete>
   <insert id="insert" parameterType="net.nonego.blog.dao.generator.model.Tag">
-    insert into tag (id, tag)
-    values (#{id,jdbcType=INTEGER}, #{tag,jdbcType=VARCHAR})
+    insert into tag (tag_id, tag_name)
+    values (#{tagId,jdbcType=INTEGER}, #{tagName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="net.nonego.blog.dao.generator.model.Tag">
     insert into tag
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="tagId != null">
+        tag_id,
       </if>
-      <if test="tag != null">
-        tag,
+      <if test="tagName != null">
+        tag_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="tagId != null">
+        #{tagId,jdbcType=INTEGER},
       </if>
-      <if test="tag != null">
-        #{tag,jdbcType=VARCHAR},
+      <if test="tagName != null">
+        #{tagName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -128,11 +128,11 @@
   <update id="updateByExampleSelective" parameterType="map">
     update tag
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+      <if test="record.tagId != null">
+        tag_id = #{record.tagId,jdbcType=INTEGER},
       </if>
-      <if test="record.tag != null">
-        tag = #{record.tag,jdbcType=VARCHAR},
+      <if test="record.tagName != null">
+        tag_name = #{record.tagName,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -141,8 +141,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update tag
-    set id = #{record.id,jdbcType=INTEGER},
-      tag = #{record.tag,jdbcType=VARCHAR}
+    set tag_id = #{record.tagId,jdbcType=INTEGER},
+      tag_name = #{record.tagName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -150,15 +150,15 @@
   <update id="updateByPrimaryKeySelective" parameterType="net.nonego.blog.dao.generator.model.Tag">
     update tag
     <set>
-      <if test="tag != null">
-        tag = #{tag,jdbcType=VARCHAR},
+      <if test="tagName != null">
+        tag_name = #{tagName,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where tag_id = #{tagId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.nonego.blog.dao.generator.model.Tag">
     update tag
-    set tag = #{tag,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    set tag_name = #{tagName,jdbcType=VARCHAR}
+    where tag_id = #{tagId,jdbcType=INTEGER}
   </update>
 </mapper>
