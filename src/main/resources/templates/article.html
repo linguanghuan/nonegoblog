@@ -1,0 +1,7 @@
+<div>
+    <span th:text="${article.id}">id</span><br />
+    <span th:text="${article.title}">title</span><br />
+    <span th:utext="${article.content}">content</span><br />
+    <span th:text="${article.authorId}">author</span><br />
+    <span th:text="${#dates.format(article.createTime,'yyyy-MM-dd HH:mm:ss')} ">createTime</span><br />
+</div>

@@ -1,4 +1,4 @@
-package net.nonego.blog.dao.model;
+package net.nonego.blog.dao.generator.model;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -295,133 +295,63 @@ public class ArticleExample {
             return (Criteria) this;
         }
 
-        public Criteria andContentIsNull() {
-            addCriterion("content is null");
+        public Criteria andAuthorIdIsNull() {
+            addCriterion("author_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andContentIsNotNull() {
-            addCriterion("content is not null");
+        public Criteria andAuthorIdIsNotNull() {
+            addCriterion("author_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andContentEqualTo(String value) {
-            addCriterion("content =", value, "content");
+        public Criteria andAuthorIdEqualTo(Integer value) {
+            addCriterion("author_id =", value, "authorId");
             return (Criteria) this;
         }
 
-        public Criteria andContentNotEqualTo(String value) {
-            addCriterion("content <>", value, "content");
+        public Criteria andAuthorIdNotEqualTo(Integer value) {
+            addCriterion("author_id <>", value, "authorId");
             return (Criteria) this;
         }
 
-        public Criteria andContentGreaterThan(String value) {
-            addCriterion("content >", value, "content");
+        public Criteria andAuthorIdGreaterThan(Integer value) {
+            addCriterion("author_id >", value, "authorId");
             return (Criteria) this;
         }
 
-        public Criteria andContentGreaterThanOrEqualTo(String value) {
-            addCriterion("content >=", value, "content");
+        public Criteria andAuthorIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("author_id >=", value, "authorId");
             return (Criteria) this;
         }
 
-        public Criteria andContentLessThan(String value) {
-            addCriterion("content <", value, "content");
+        public Criteria andAuthorIdLessThan(Integer value) {
+            addCriterion("author_id <", value, "authorId");
             return (Criteria) this;
         }
 
-        public Criteria andContentLessThanOrEqualTo(String value) {
-            addCriterion("content <=", value, "content");
+        public Criteria andAuthorIdLessThanOrEqualTo(Integer value) {
+            addCriterion("author_id <=", value, "authorId");
             return (Criteria) this;
         }
 
-        public Criteria andContentLike(String value) {
-            addCriterion("content like", value, "content");
+        public Criteria andAuthorIdIn(List<Integer> values) {
+            addCriterion("author_id in", values, "authorId");
             return (Criteria) this;
         }
 
-        public Criteria andContentNotLike(String value) {
-            addCriterion("content not like", value, "content");
+        public Criteria andAuthorIdNotIn(List<Integer> values) {
+            addCriterion("author_id not in", values, "authorId");
             return (Criteria) this;
         }
 
-        public Criteria andContentIn(List<String> values) {
-            addCriterion("content in", values, "content");
+        public Criteria andAuthorIdBetween(Integer value1, Integer value2) {
+            addCriterion("author_id between", value1, value2, "authorId");
             return (Criteria) this;
         }
 
-        public Criteria andContentNotIn(List<String> values) {
-            addCriterion("content not in", values, "content");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentBetween(String value1, String value2) {
-            addCriterion("content between", value1, value2, "content");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentNotBetween(String value1, String value2) {
-            addCriterion("content not between", value1, value2, "content");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorIsNull() {
-            addCriterion("author is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorIsNotNull() {
-            addCriterion("author is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorEqualTo(Integer value) {
-            addCriterion("author =", value, "author");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorNotEqualTo(Integer value) {
-            addCriterion("author <>", value, "author");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorGreaterThan(Integer value) {
-            addCriterion("author >", value, "author");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorGreaterThanOrEqualTo(Integer value) {
-            addCriterion("author >=", value, "author");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorLessThan(Integer value) {
-            addCriterion("author <", value, "author");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorLessThanOrEqualTo(Integer value) {
-            addCriterion("author <=", value, "author");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorIn(List<Integer> values) {
-            addCriterion("author in", values, "author");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorNotIn(List<Integer> values) {
-            addCriterion("author not in", values, "author");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorBetween(Integer value1, Integer value2) {
-            addCriterion("author between", value1, value2, "author");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorNotBetween(Integer value1, Integer value2) {
-            addCriterion("author not between", value1, value2, "author");
+        public Criteria andAuthorIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("author_id not between", value1, value2, "authorId");
             return (Criteria) this;
         }
 

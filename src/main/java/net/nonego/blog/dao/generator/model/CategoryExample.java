@@ -1,4 +1,4 @@
-package net.nonego.blog.dao.model;
+package net.nonego.blog.dao.generator.model;
 
 import java.util.ArrayList;
 import java.util.List;

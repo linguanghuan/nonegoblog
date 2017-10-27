@@ -1,4 +1,4 @@
-package net.nonego.blog.dao.model;
+package net.nonego.blog.dao.generator.model;
 
 public class Category {
     private Integer id;

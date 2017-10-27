@@ -13,5 +13,5 @@ spring:
   resources: 
     static-locations: classpath:/    
 mybatis:
-  mapperLocations: classpath:net/nonego/blog/dao/xml/*.xml
-  typeAliasesPackage: net.nonego.blog.dao.model
+  mapperLocations: classpath:net/nonego/blog/dao/generator/xml/*.xml
+  typeAliasesPackage: net.nonego.blog.dao.generator.model

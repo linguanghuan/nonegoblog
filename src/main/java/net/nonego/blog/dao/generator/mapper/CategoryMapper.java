@@ -1,8 +1,8 @@
-package net.nonego.blog.dao.mapper;
+package net.nonego.blog.dao.generator.mapper;
 
 import java.util.List;
-import net.nonego.blog.dao.model.Category;
-import net.nonego.blog.dao.model.CategoryExample;
+import net.nonego.blog.dao.generator.model.Category;
+import net.nonego.blog.dao.generator.model.CategoryExample;
 import org.apache.ibatis.annotations.Param;
 
 public interface CategoryMapper {

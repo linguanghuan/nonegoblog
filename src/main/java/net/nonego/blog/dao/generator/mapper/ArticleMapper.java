@@ -1,8 +1,8 @@
-package net.nonego.blog.dao.mapper;
+package net.nonego.blog.dao.generator.mapper;
 
 import java.util.List;
-import net.nonego.blog.dao.model.Article;
-import net.nonego.blog.dao.model.ArticleExample;
+import net.nonego.blog.dao.generator.model.Article;
+import net.nonego.blog.dao.generator.model.ArticleExample;
 import org.apache.ibatis.annotations.Param;
 
 public interface ArticleMapper {
@@ -16,15 +16,21 @@ public interface ArticleMapper {
 
     int insertSelective(Article record);
 
+    List<Article> selectByExampleWithBLOBs(ArticleExample example);
+
     List<Article> selectByExample(ArticleExample example);
 
     Article selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Article record, @Param("example") ArticleExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") Article record, @Param("example") ArticleExample example);
+
     int updateByExample(@Param("record") Article record, @Param("example") ArticleExample example);
 
     int updateByPrimaryKeySelective(Article record);
+
+    int updateByPrimaryKeyWithBLOBs(Article record);
 
     int updateByPrimaryKey(Article record);
 }

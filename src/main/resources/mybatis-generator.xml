@@ -28,30 +28,32 @@
 		</javaTypeResolver>
 
 		<!-- 数据表对应的model 层 -->
-		<javaModelGenerator targetPackage="net.nonego.blog.dao.model"
+		<javaModelGenerator targetPackage="net.nonego.blog.dao.generator.model"
 			targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
 		<!-- sql mapper 隐射配置文件 -->
-		<sqlMapGenerator targetPackage="net.nonego.blog.dao.xml"
+		<sqlMapGenerator targetPackage="net.nonego.blog.dao.generator.xml"
 			targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
 		<!-- 在ibatis2 中是dao层，但在mybatis3中，其实就是mapper接口 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="net.nonego.blog.dao.mapper" targetProject="src/main/java">
+			targetPackage="net.nonego.blog.dao.generator.mapper" targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
 		<!-- 要对那些数据表进行生成操作，必须要有一个. -->
-		<table schema="catagory" tableName="catagory" domainObjectName="Category">
-		</table>
 		<table schema="article" tableName="article" domainObjectName="Article">
+        </table>
+		<table schema="catagory" tableName="catagory" domainObjectName="Category">
 		</table>
 		<table schema="tag" tableName="tag" domainObjectName="Tag">
 		</table>
+		<table schema="article_tag" tableName="article_tag" domainObjectName="ArticleTag">
+        </table>
 	</context>
 </generatorConfiguration>

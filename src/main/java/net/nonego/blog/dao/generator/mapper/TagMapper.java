@@ -1,8 +1,8 @@
-package net.nonego.blog.dao.mapper;
+package net.nonego.blog.dao.generator.mapper;
 
 import java.util.List;
-import net.nonego.blog.dao.model.Tag;
-import net.nonego.blog.dao.model.TagExample;
+import net.nonego.blog.dao.generator.model.Tag;
+import net.nonego.blog.dao.generator.model.TagExample;
 import org.apache.ibatis.annotations.Param;
 
 public interface TagMapper {
