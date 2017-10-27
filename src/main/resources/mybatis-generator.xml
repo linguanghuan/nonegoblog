@@ -47,10 +47,11 @@
 		</javaClientGenerator>
 
 		<!-- 要对那些数据表进行生成操作，必须要有一个. -->
-		<table schema="catagory" tableName="catagory" domainObjectName="Category"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false">
+		<table schema="catagory" tableName="catagory" domainObjectName="Category">
+		</table>
+		<table schema="article" tableName="article" domainObjectName="Article">
+		</table>
+		<table schema="tag" tableName="tag" domainObjectName="Tag">
 		</table>
 	</context>
 </generatorConfiguration>
