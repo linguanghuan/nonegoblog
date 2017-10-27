@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import net.nonego.blog.pojo.Greeting;
 
 @RestController
+@RequestMapping("/test/rest")
 public class TestRestController {
 	@RequestMapping("/greeting")
 	public Greeting greeting() {

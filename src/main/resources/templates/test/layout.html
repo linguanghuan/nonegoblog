@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+
+<meta charset="utf-8" />
+<title>首页</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- bootstrap -->
+<link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css"
+	th:href="@{/bootstrap/css/bootstrap.min.css}" />
+
+<style type="text/css">
+body {
+	font-family: 微软雅黑;
+	font-size: 14px;
+}
+</style>
+
+</head>
+<body>
+	<div th:fragment="topnav">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">NonegoBlog</a>
+				</div>
+				<div>
+					<ul class="nav navbar-nav">
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"> Java <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">多线程</a></li>
+								<li><a href="#">Netty</a></li>
+							</ul></li>
+						<li><a href="#">Linux</a></li>
+						<li><a href="#">C/C++</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<div layout:fragment="content"></div>
+	<!-- 导航条 -->
+	<!-- put the scripts below -->
+	<script src="../static/jquery/jquery-3.2.1.js"
+		th:src="@{/jquery/jquery-3.2.1.js}"></script>
+	<script src="../static/bootstrap/js/bootstrap.min.js"
+		th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
