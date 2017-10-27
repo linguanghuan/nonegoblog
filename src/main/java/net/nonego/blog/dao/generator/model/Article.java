@@ -1,6 +1,7 @@
 package net.nonego.blog.dao.generator.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Article {
     private Integer id;
@@ -14,6 +15,8 @@ public class Article {
     private Date createTime;
 
     private String content;
+
+    private List<ArticleTag> articleTags;
 
     public Integer getId() {
         return id;
@@ -61,5 +64,13 @@ public class Article {
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
+    }
+
+    public List<ArticleTag> getArticleTags() {
+        return articleTags;
+    }
+
+    public void setArticleTags(List<ArticleTag> articleTags) {
+        this.articleTags=articleTags;
     }
 }

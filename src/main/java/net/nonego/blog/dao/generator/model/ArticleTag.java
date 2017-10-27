@@ -5,6 +5,8 @@ public class ArticleTag {
 
     private Integer tagId;
 
+    private Tag tag;
+
     public Integer getArticleId() {
         return articleId;
     }
@@ -19,5 +21,13 @@ public class ArticleTag {
 
     public void setTagId(Integer tagId) {
         this.tagId = tagId;
+    }
+
+    public Tag getTag() {
+        return tag;
+    }
+
+    public void setTag(Tag tag) {
+        this.tag=tag;
     }
 }

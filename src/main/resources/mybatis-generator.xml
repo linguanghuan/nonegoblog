@@ -9,6 +9,10 @@
 		location="D:\MavenLocalRepository\mysql\mysql-connector-java\5.1.43\mysql-connector-java-5.1.43.jar" />
 
 	<context id="blog_mysql_tables" targetRuntime="MyBatis3">
+		<!-- 生成一对一配置 -->
+		<plugin type="cc.bandaotixi.plugins.OneToOnePlugin" />
+		<!-- 生成一对多配置 -->
+		<plugin type="cc.bandaotixi.plugins.OneToManyPlugin" />
 
 		<!-- 为了防止生成的代码中有很多注释，比较难看，加入下面的配置控制 -->
 		<commentGenerator>
@@ -44,16 +48,17 @@
 		<javaClientGenerator type="XMLMAPPER"
 			targetPackage="net.nonego.blog.dao.generator.mapper" targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
 		</javaClientGenerator>
 
-		<!-- 要对那些数据表进行生成操作，必须要有一个. -->
+		<!-- 要对哪些数据表进行生成操作，必须要有一个. -->
 		<table schema="article" tableName="article" domainObjectName="Article">
-        </table>
-		<table schema="catagory" tableName="catagory" domainObjectName="Category">
+		  <oneToMany mappingTable="article_tag" column="id" joinColumn="article_id" />
 		</table>
-		<table schema="tag" tableName="tag" domainObjectName="Tag">
-		</table>
+		<table schema="catagory" tableName="catagory" domainObjectName="Category"></table>
+		<table schema="tag" tableName="tag" domainObjectName="Tag"></table>
 		<table schema="article_tag" tableName="article_tag" domainObjectName="ArticleTag">
-        </table>
+			<oneToOne mappingTable="tag" column="tag_id" joinColumn="id" />
+		</table>
 	</context>
 </generatorConfiguration>

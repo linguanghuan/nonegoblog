@@ -7,6 +7,7 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="author_id" jdbcType="INTEGER" property="authorId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <collection column="id" property="articleTags" select="getArticleTags" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="net.nonego.blog.dao.generator.model.Article">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
@@ -267,4 +268,7 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getArticleTags" resultMap="net.nonego.blog.dao.generator.mapper.ArticleTagMapper.BaseResultMap">
+    select article_id,tag_id from article_tag where article_id=#{id} 
+  </select>
 </mapper>
