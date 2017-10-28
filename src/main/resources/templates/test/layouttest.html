@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-	layout:decorator="layout">
+	layout:decorator="test/layout">
 <!-- layout文件路径-->
 
 <head>
@@ -9,6 +9,9 @@
 <title>首页</title>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="../../static/bootstrap/css/bootstrap.min.css"
+	th:href="@{/bootstrap/css/bootstrap.min.css}" />
 </head>
 
 <body>
@@ -25,13 +28,12 @@
 		<div style="font-size: 16px;">
 			<a href="/tools/editTable2" target="_blank">可编辑表格插件二测试</a>
 		</div>
-    <script src="../static/jquery/jquery-3.2.1.js"
-        th:src="@{/jquery/jquery-3.2.1.js}"></script>
-    <script src="../static/bootstrap/js/bootstrap.min.js"
-        th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-
 	</div>
 	<!-- 编辑表格 -->
+	<script src="../static/jquery/jquery-3.2.1.js"
+		th:src="@{/jquery/jquery-3.2.1.js}"></script>
+	<script src="../static/bootstrap/js/bootstrap.min.js"
+		th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
 

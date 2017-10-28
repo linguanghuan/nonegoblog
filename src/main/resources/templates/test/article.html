@@ -1,27 +1,39 @@
-<div>
-	<h1 th:text="${article.title}">title</h1>
-	<div>
-	id: <span th:text="${article.articleId}">articleId</span>,
-	作者:<span th:text="${article.user.userName}">author</span>,
-	<span
-		th:text="${#dates.format(article.createTime,'yyyy-MM-dd HH:mm:ss')} ">createTime</span>
-    </div>
-    标签:
-    <table>
-	    <tr th:each="tag,tagStat : ${article.articleTags}">
-	        <td th:text="${tagStat.index}">index</td>
-	        <td th:text="${tag.tag.tagName}">tagName</td>
-	    </tr>
-    </table>
-    分类:
-    <table>
-        <tr th:each="cata,cataStat : ${article.articleCategorys}">
-            <td th:text="${cataStat.index}">index</td>
-            <td th:text="${cata.category.categoryName}">categoryName</td>
-        </tr>
-    </table>
-    类型: <span th:text="${article.type.typeName}"></span>
-    <span th:if="${article.type.typeId==2}" th:text="${article.sourceUrl}"></span>
-	<div th:utext="${article.content}">content</div>
-	<br />
-</div>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="test/layout">
+<!-- layout文件路径-->
+<body>
+	<div layout:fragment="content"
+		style="width: 96%; margin-left: auto; margin-right: auto;">
+		<h1 th:text="${article.title}">title</h1>
+
+		<div>
+			<span name="id" th:hidden="hidden" th:value="${article.articleId}">articleId</span>
+			作者:<span th:text="${article.user.userName}">author</span> , 创建时间:<span
+				th:text="${#dates.format(article.createTime,'yyyy-MM-dd HH:mm:ss')} ">createTime</span>
+		</div>
+		<div>
+			标签: <span th:each="tag,tagStat : ${article.articleTags}"> <span
+				th:text="${tagStat.index}" th:hidden="hidden">index</span> <span
+				th:text="${tag.tag.tagName}">tagName</span>
+			</span>
+		</div>
+
+		<div>
+			分类: <span th:each="cata,cataStat : ${article.articleCategorys}">
+				<span th:text="${cataStat.index}" th:hidden="hidden">index</span> <span
+				th:text="${cata.category.categoryName}">categoryName</span>
+			</span>
+		</div>
+		<div>
+			<span th:text="${article.type.typeName}"></span>
+			<a th:if="${article.type.typeId==2}" th:href="${article.sourceUrl}"
+				th:text="${article.sourceUrl}"> </a>
+		</div>
+		<hr>
+		<div th:utext="${article.content}">content</div>
+		<br />
+	</div>
+</body>
+</html>
