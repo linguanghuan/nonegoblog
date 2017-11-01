@@ -4,31 +4,30 @@
 	layout:decorator="test/layout">
 <!-- layout文件路径-->
 <body>
+
 	<div layout:fragment="content"
 		style="width: 96%; margin-left: auto; margin-right: auto;">
 		<h1 th:text="${article.title}">title</h1>
 
 		<div>
 			<span name="id" th:hidden="hidden" th:value="${article.articleId}">articleId</span>
-			作者:<span th:text="${article.user.userName}">author</span> , 创建时间:<span
+			作者:<span th:text="${article.user.userName}">author</span>,&nbsp;
+			创建时间:<span
 				th:text="${#dates.format(article.createTime,'yyyy-MM-dd HH:mm:ss')} ">createTime</span>
 		</div>
 		<div>
-			标签: <span th:each="tag,tagStat : ${article.articleTags}"> <span
-				th:text="${tagStat.index}" th:hidden="hidden">index</span> <span
-				th:text="${tag.tag.tagName}">tagName</span>
+			分类: <span th:each="cata,cataStat : ${article.articleCategorys}">
+				<span th:text="${cataStat.index}" hidden="hidden" th:hidden="hidden">index</span>
+				<span th:text="${cata.category.categoryName}">categoryName</span>
+			</span> ,&nbsp; 标签: <span th:each="tag,tagStat : ${article.articleTags}">
+				<span th:text="${tagStat.index}" hidden="hidden" th:hidden="hidden">index</span>
+				<span th:text="${tag.tag.tagName}" class="label label-default">tagName</span>
 			</span>
 		</div>
 
 		<div>
-			分类: <span th:each="cata,cataStat : ${article.articleCategorys}">
-				<span th:text="${cataStat.index}" th:hidden="hidden">index</span> <span
-				th:text="${cata.category.categoryName}">categoryName</span>
-			</span>
-		</div>
-		<div>
-			<span th:text="${article.type.typeName}"></span>
-			<a th:if="${article.type.typeId==2}" th:href="${article.sourceUrl}"
+			<span th:text="${article.type.typeName} +':'"></span> <a
+				th:if="${article.type.typeId==2}" th:href="${article.sourceUrl}"
 				th:text="${article.sourceUrl}"> </a>
 		</div>
 		<hr>
